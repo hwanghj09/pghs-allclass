@@ -307,8 +307,6 @@
       const successCount = students.filter((student) => student.status === "success" && parseAssignment(student.newId)).length;
       const failedCount = Math.max(students.length - successCount, 0);
 
-      document.getElementById("meta").textContent =
-        `데이터 출처: ${data.meta?.source ?? "pangyo_fast_results.json"}${data.meta?.generatedAt ? ` (${data.meta.generatedAt})` : ""}`;
       document.getElementById("total").textContent = students.length;
       document.getElementById("success").textContent = successCount;
       document.getElementById("failed").textContent = failedCount;
