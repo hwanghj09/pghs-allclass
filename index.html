@@ -10,8 +10,6 @@
       --card: #ffffff;
       --text: #1f2937;
       --muted: #6b7280;
-      --accent: #0f766e;
-      --danger: #b91c1c;
       --line: #e5e7eb;
     }
 
@@ -30,9 +28,7 @@
       padding: 24px;
     }
 
-    .header {
-      margin-bottom: 16px;
-    }
+    .header { margin-bottom: 16px; }
 
     h1 {
       margin: 0;
@@ -80,7 +76,7 @@
 
     .controls {
       display: grid;
-      grid-template-columns: 1fr 180px;
+      grid-template-columns: 1fr 180px 140px 140px;
       gap: 10px;
     }
 
@@ -177,6 +173,12 @@
         <option value="success">성공만</option>
         <option value="failed">실패만</option>
       </select>
+      <select id="gradeFilter">
+        <option value="all">전체 학년</option>
+      </select>
+      <select id="classFilter">
+        <option value="all">전체 반</option>
+      </select>
     </section>
 
     <section class="panel">
@@ -194,13 +196,41 @@
           <tbody id="tbody"></tbody>
         </table>
       </div>
-      <div id="count" class="hint"></div>
-      <div class="hint">참고: 브라우저에서 바로 열 때 로딩이 안 되면 `python3 -m http.server 8000` 후 `http://localhost:8000`으로 접속하세요.</div>
     </section>
   </main>
 
   <script>
     let source = [];
+
+    function parseGradeClass(newId) {
+      if (!newId || newId.length < 3) return { grade: null, classNo: null };
+      return {
+        grade: newId.slice(0, 1),
+        classNo: newId.slice(1, 3)
+      };
+    }
+
+    function buildGradeClassFilters(items) {
+      const grades = new Set();
+      const classes = new Set();
+
+      items.forEach((item) => {
+        const { grade, classNo } = parseGradeClass(item.newId);
+        if (grade) grades.add(grade);
+        if (classNo) classes.add(classNo);
+      });
+
+      const gradeFilter = document.getElementById("gradeFilter");
+      const classFilter = document.getElementById("classFilter");
+
+      [...grades].sort((a, b) => Number(a) - Number(b)).forEach((grade) => {
+        gradeFilter.insertAdjacentHTML("beforeend", `<option value="${grade}">${grade}학년</option>`);
+      });
+
+      [...classes].sort((a, b) => Number(a) - Number(b)).forEach((classNo) => {
+        classFilter.insertAdjacentHTML("beforeend", `<option value="${classNo}">${Number(classNo)}반</option>`);
+      });
+    }
 
     function rowHtml(item, index) {
       const statusLabel = item.status === "success" ? "성공" : "실패";
@@ -219,10 +249,16 @@
     function render() {
       const q = document.getElementById("q").value.trim().toLowerCase();
       const status = document.getElementById("statusFilter").value;
+      const grade = document.getElementById("gradeFilter").value;
+      const classNo = document.getElementById("classFilter").value;
+
       const filtered = source.filter((s) => {
+        const parsed = parseGradeClass(s.newId);
         const qPass = !q || [s.oldId, s.name, s.newId ?? ""].join(" ").toLowerCase().includes(q);
         const statusPass = status === "all" || s.status === status;
-        return qPass && statusPass;
+        const gradePass = grade === "all" || parsed.grade === grade;
+        const classPass = classNo === "all" || parsed.classNo === classNo;
+        return qPass && statusPass && gradePass && classPass;
       });
 
       document.getElementById("tbody").innerHTML = filtered.map(rowHtml).join("");
@@ -240,8 +276,12 @@
       document.getElementById("success").textContent = data.meta.success;
       document.getElementById("failed").textContent = data.meta.failed;
 
+      buildGradeClassFilters(source.filter((s) => s.status === "success"));
+
       document.getElementById("q").addEventListener("input", render);
       document.getElementById("statusFilter").addEventListener("change", render);
+      document.getElementById("gradeFilter").addEventListener("change", render);
+      document.getElementById("classFilter").addEventListener("change", render);
       render();
     }
 
