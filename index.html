@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pangyo Fast Results Viewer</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --danger: #b91c1c;
+      --line: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Pretendard", "Noto Sans KR", sans-serif;
+      background: radial-gradient(circle at 10% 10%, #dbeafe 0%, var(--bg) 40%);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .header {
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .sub {
+      color: var(--muted);
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
+      margin-bottom: 14px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      background: #f8fafc;
+    }
+
+    .stat .label {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .stat .value {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      gap: 10px;
+    }
+
+    input, select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 14px;
+      background: #fff;
+    }
+
+    .table-wrap {
+      overflow: auto;
+      max-height: 70vh;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background: #f1f5f9;
+      font-size: 13px;
+      text-align: left;
+      padding: 10px;
+      border-bottom: 1px solid var(--line);
+      white-space: nowrap;
+    }
+
+    tbody td {
+      padding: 10px;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 14px;
+    }
+
+    tbody tr:hover { background: #f8fafc; }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .ok { color: #065f46; background: #d1fae5; }
+    .fail { color: #991b1b; background: #fee2e2; }
+
+    .hint {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 760px) {
+      .stats { grid-template-columns: 1fr; }
+      .controls { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="header">
+      <h1>Pangyo Fast Results Viewer</h1>
+      <div id="meta" class="sub">데이터 로딩 중...</div>
+    </section>
+
+    <section class="panel stats">
+      <div class="stat">
+        <div class="label">전체</div>
+        <div id="total" class="value">-</div>
+      </div>
+      <div class="stat">
+        <div class="label">성공</div>
+        <div id="success" class="value">-</div>
+      </div>
+      <div class="stat">
+        <div class="label">실패</div>
+        <div id="failed" class="value">-</div>
+      </div>
+    </section>
+
+    <section class="panel controls">
+      <input id="q" placeholder="이름/구학번/신학번 검색" />
+      <select id="statusFilter">
+        <option value="all">전체 상태</option>
+        <option value="success">성공만</option>
+        <option value="failed">실패만</option>
+      </select>
+    </section>
+
+    <section class="panel">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>구학번</th>
+              <th>이름</th>
+              <th>신학번</th>
+              <th>상태</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+      <div id="count" class="hint"></div>
+      <div class="hint">참고: 브라우저에서 바로 열 때 로딩이 안 되면 `python3 -m http.server 8000` 후 `http://localhost:8000`으로 접속하세요.</div>
+    </section>
+  </main>
+
+  <script>
+    let source = [];
+
+    function rowHtml(item, index) {
+      const statusLabel = item.status === "success" ? "성공" : "실패";
+      const badgeClass = item.status === "success" ? "ok" : "fail";
+      return `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${item.oldId}</td>
+          <td>${item.name}</td>
+          <td>${item.newId ?? "-"}</td>
+          <td><span class="badge ${badgeClass}">${statusLabel}</span></td>
+        </tr>
+      `;
+    }
+
+    function render() {
+      const q = document.getElementById("q").value.trim().toLowerCase();
+      const status = document.getElementById("statusFilter").value;
+      const filtered = source.filter((s) => {
+        const qPass = !q || [s.oldId, s.name, s.newId ?? ""].join(" ").toLowerCase().includes(q);
+        const statusPass = status === "all" || s.status === status;
+        return qPass && statusPass;
+      });
+
+      document.getElementById("tbody").innerHTML = filtered.map(rowHtml).join("");
+      document.getElementById("count").textContent = `표시 중: ${filtered.length} / ${source.length}`;
+    }
+
+    async function init() {
+      const res = await fetch("./pangyo_fast_results.json");
+      if (!res.ok) throw new Error("JSON 로딩 실패");
+      const data = await res.json();
+
+      source = data.students;
+      document.getElementById("meta").textContent = `소스: ${data.meta.source}`;
+      document.getElementById("total").textContent = data.meta.total;
+      document.getElementById("success").textContent = data.meta.success;
+      document.getElementById("failed").textContent = data.meta.failed;
+
+      document.getElementById("q").addEventListener("input", render);
+      document.getElementById("statusFilter").addEventListener("change", render);
+      render();
+    }
+
+    init().catch((err) => {
+      document.getElementById("meta").textContent = `오류: ${err.message}`;
+    });
+  </script>
+</body>
+</html>
