@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2026판교고 2학년반배정 한눈에보기</title>
+  <title>2026판교고 반배정 한눈에보기</title>
   <style>
     :root {
       --bg: #eef2ff;
@@ -55,6 +55,23 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
+    }
+
+    .tab-button {
+      border: 1px solid var(--line);
+      background: #ffffff;
+      color: #1f2937;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .tab-button.active {
+      background: #1d4ed8;
+      border-color: #1d4ed8;
+      color: #ffffff;
     }
 
     .button-link {
@@ -179,11 +196,13 @@
 <body>
   <main>
     <section class="panel">
-      <h1>2026판교고 2학년반배정 한눈에보기</h1>
+      <h1 id="title">2026판교고 반배정 한눈에보기</h1>
       <div id="meta" class="meta">데이터 로딩 중...</div>
       <div class="meta" id="credit">Made by 임태윤, 황현준</div>
       <div class="actions">
-        <a class="button-link" href="./2026판교고_2학년반배정_한눈에보기.xlsx" download>엑셀 파일 다운로드</a>
+        <button type="button" class="tab-button active" id="tab-grade2">2학년</button>
+        <button type="button" class="tab-button" id="tab-grade3">3학년</button>
+        <a class="button-link" id="excel-link" href="./2026판교고_2학년반배정_한눈에보기_배포용.xlsx" download>엑셀 파일 다운로드</a>
       </div>
     </section>
 
@@ -208,14 +227,14 @@
           <thead>
             <tr>
               <th>번호</th>
-              <th>1-1반</th>
-              <th>1-2반</th>
-              <th>1-3반</th>
-              <th>1-4반</th>
-              <th>1-5반</th>
-              <th>1-6반</th>
-              <th>1-7반</th>
-              <th>1-8반</th>
+              <th id="class-h1">2-1반</th>
+              <th id="class-h2">2-2반</th>
+              <th id="class-h3">2-3반</th>
+              <th id="class-h4">2-4반</th>
+              <th id="class-h5">2-5반</th>
+              <th id="class-h6">2-6반</th>
+              <th id="class-h7">2-7반</th>
+              <th id="class-h8">2-8반</th>
             </tr>
           </thead>
           <tbody id="tbody"></tbody>
@@ -228,6 +247,25 @@
   <script>
     const CLASS_COUNT = 8;
     const DEFAULT_MAX_ROW = 25;
+    const DATASETS = {
+      grade2: {
+        key: "grade2",
+        label: "현 2학년",
+        title: "2026판교고 2학년반배정 한눈에보기",
+        file: "./pangyo_fast_results.json",
+        prevGradeNo: 2,
+        excel: "./2026판교고_2학년반배정_한눈에보기_배포용.xlsx",
+      },
+      grade3: {
+        key: "grade3",
+        label: "현 3학년",
+        title: "2026판교고 3학년반배정 한눈에보기",
+        file: "./pangyo_fast_results_3학년.json",
+        prevGradeNo: 3,
+        excel: "./2026판교고_3학년반배정_한눈에보기_배포용.xlsx",
+      },
+    };
+    let currentDatasetKey = "grade2";
 
     function maskName(name) {
       const text = String(name ?? "").trim();
@@ -295,8 +333,23 @@
       document.getElementById("count").textContent = "Made by 임태윤, 황현준";
     }
 
-    async function init() {
-      const res = await fetch("./pangyo_fast_results.json");
+    function setActiveTab(datasetKey) {
+      document.getElementById("tab-grade2").classList.toggle("active", datasetKey === "grade2");
+      document.getElementById("tab-grade3").classList.toggle("active", datasetKey === "grade3");
+    }
+
+    function setClassHeaders(prevGradeNo) {
+      for (let i = 1; i <= CLASS_COUNT; i += 1) {
+        const el = document.getElementById(`class-h${i}`);
+        if (el) el.textContent = `${prevGradeNo}-${i}반`;
+      }
+    }
+
+    async function loadDataset(datasetKey) {
+      const dataset = DATASETS[datasetKey];
+      if (!dataset) throw new Error("데이터셋 설정 오류");
+
+      const res = await fetch(dataset.file);
       if (!res.ok) {
         throw new Error("JSON 로딩 실패");
       }
@@ -310,8 +363,45 @@
       document.getElementById("total").textContent = students.length;
       document.getElementById("success").textContent = successCount;
       document.getElementById("failed").textContent = failedCount;
+      document.getElementById("title").textContent = dataset.title;
+      document.title = dataset.title;
+      document.getElementById("meta").textContent = `${dataset.label} 기준 | 총 ${students.length}명`;
+      setClassHeaders(dataset.prevGradeNo);
+      setActiveTab(datasetKey);
+
+      const excelLink = document.getElementById("excel-link");
+      if (dataset.excel) {
+        excelLink.href = dataset.excel;
+        excelLink.style.display = "inline-block";
+      } else {
+        excelLink.style.display = "none";
+      }
 
       render(students);
+    }
+
+    async function switchDataset(datasetKey) {
+      currentDatasetKey = datasetKey;
+      await loadDataset(datasetKey);
+    }
+
+    async function init() {
+      document.getElementById("tab-grade2").addEventListener("click", () => {
+        if (currentDatasetKey !== "grade2") {
+          switchDataset("grade2").catch((err) => {
+            document.getElementById("meta").textContent = `오류: ${err.message}`;
+          });
+        }
+      });
+      document.getElementById("tab-grade3").addEventListener("click", () => {
+        if (currentDatasetKey !== "grade3") {
+          switchDataset("grade3").catch((err) => {
+            document.getElementById("meta").textContent = `오류: ${err.message}`;
+          });
+        }
+      });
+
+      await switchDataset("grade2");
     }
 
     init().catch((err) => {

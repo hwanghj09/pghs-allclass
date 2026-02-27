@@ -1,0 +1,1219 @@
+{
+  "meta": {
+    "source": "25-2학년.txt",
+    "generatedAt": "2026-02-27T23:09:51",
+    "presnatnSn": "575",
+    "target": "2026학년도 3학년 학급 배정",
+    "total": 201,
+    "success": 190,
+    "failed": 11
+  },
+  "students": [
+    {
+      "oldId": "20101",
+      "name": "강나율",
+      "newId": "30201",
+      "status": "success"
+    },
+    {
+      "oldId": "20102",
+      "name": "곽도희",
+      "newId": "30402",
+      "status": "success"
+    },
+    {
+      "oldId": "20103",
+      "name": "김기은",
+      "newId": "30102",
+      "status": "success"
+    },
+    {
+      "oldId": "20104",
+      "name": "김나현",
+      "newId": "30301",
+      "status": "success"
+    },
+    {
+      "oldId": "20105",
+      "name": "김다온",
+      "newId": "30501",
+      "status": "success"
+    },
+    {
+      "oldId": "20106",
+      "name": "김준원",
+      "newId": null,
+      "status": "failed"
+    },
+    {
+      "oldId": "20107",
+      "name": "나한빈",
+      "newId": "30109",
+      "status": "success"
+    },
+    {
+      "oldId": "20108",
+      "name": "문효은",
+      "newId": "30111",
+      "status": "success"
+    },
+    {
+      "oldId": "20109",
+      "name": "민서정",
+      "newId": "30410",
+      "status": "success"
+    },
+    {
+      "oldId": "20110",
+      "name": "박지윤",
+      "newId": "30413",
+      "status": "success"
+    },
+    {
+      "oldId": "20111",
+      "name": "송윤아",
+      "newId": "30810",
+      "status": "success"
+    },
+    {
+      "oldId": "20112",
+      "name": "엄의진",
+      "newId": "30214",
+      "status": "success"
+    },
+    {
+      "oldId": "20113",
+      "name": "왕윤",
+      "newId": "30711",
+      "status": "success"
+    },
+    {
+      "oldId": "20114",
+      "name": "유도영",
+      "newId": "30414",
+      "status": "success"
+    },
+    {
+      "oldId": "20115",
+      "name": "유의선",
+      "newId": "30415",
+      "status": "success"
+    },
+    {
+      "oldId": "20116",
+      "name": "이수연",
+      "newId": "30215",
+      "status": "success"
+    },
+    {
+      "oldId": "20117",
+      "name": "이재원",
+      "newId": "30312",
+      "status": "success"
+    },
+    {
+      "oldId": "20118",
+      "name": "이준휘",
+      "newId": "30714",
+      "status": "success"
+    },
+    {
+      "oldId": "20119",
+      "name": "임동건",
+      "newId": "30120",
+      "status": "success"
+    },
+    {
+      "oldId": "20120",
+      "name": "임샤론",
+      "newId": "30815",
+      "status": "success"
+    },
+    {
+      "oldId": "20121",
+      "name": "장정원",
+      "newId": "30718",
+      "status": "success"
+    },
+    {
+      "oldId": "20122",
+      "name": "진승찬",
+      "newId": "30123",
+      "status": "success"
+    },
+    {
+      "oldId": "20123",
+      "name": "최수인",
+      "newId": "30319",
+      "status": "success"
+    },
+    {
+      "oldId": "20124",
+      "name": "최수현",
+      "newId": null,
+      "status": "failed"
+    },
+    {
+      "oldId": "20125",
+      "name": "최호영",
+      "newId": "30321",
+      "status": "success"
+    },
+    {
+      "oldId": "20126",
+      "name": "이지환",
+      "newId": "30715",
+      "status": "success"
+    },
+    {
+      "oldId": "20201",
+      "name": "강예준",
+      "newId": "30801",
+      "status": "success"
+    },
+    {
+      "oldId": "20202",
+      "name": "권효재",
+      "newId": null,
+      "status": "failed"
+    },
+    {
+      "oldId": "20203",
+      "name": "김기림",
+      "newId": "30601",
+      "status": "success"
+    },
+    {
+      "oldId": "20204",
+      "name": "김민재",
+      "newId": "30205",
+      "status": "success"
+    },
+    {
+      "oldId": "20205",
+      "name": "김시영",
+      "newId": "30503",
+      "status": "success"
+    },
+    {
+      "oldId": "20206",
+      "name": "김유빈",
+      "newId": "30107",
+      "status": "success"
+    },
+    {
+      "oldId": "20207",
+      "name": "김해준",
+      "newId": null,
+      "status": "failed"
+    },
+    {
+      "oldId": "20208",
+      "name": "김현서",
+      "newId": "30407",
+      "status": "success"
+    },
+    {
+      "oldId": "20209",
+      "name": "박가온",
+      "newId": null,
+      "status": "failed"
+    },
+    {
+      "oldId": "20210",
+      "name": "박시후",
+      "newId": "30305",
+      "status": "success"
+    },
+    {
+      "oldId": "20211",
+      "name": "박주하",
+      "newId": "30209",
+      "status": "success"
+    },
+    {
+      "oldId": "20212",
+      "name": "박휘재",
+      "newId": "30606",
+      "status": "success"
+    },
+    {
+      "oldId": "20213",
+      "name": "신지훈",
+      "newId": "30213",
+      "status": "success"
+    },
+    {
+      "oldId": "20214",
+      "name": "안소현",
+      "newId": "30609",
+      "status": "success"
+    },
+    {
+      "oldId": "20215",
+      "name": "안태준",
+      "newId": "30710",
+      "status": "success"
+    },
+    {
+      "oldId": "20216",
+      "name": "오승헌",
+      "newId": "30610",
+      "status": "success"
+    },
+    {
+      "oldId": "20217",
+      "name": "유현의",
+      "newId": "30309",
+      "status": "success"
+    },
+    {
+      "oldId": "20218",
+      "name": "이나리",
+      "newId": "30118",
+      "status": "success"
+    },
+    {
+      "oldId": "20219",
+      "name": "이연서",
+      "newId": "30119",
+      "status": "success"
+    },
+    {
+      "oldId": "20220",
+      "name": "이현준",
+      "newId": "30218",
+      "status": "success"
+    },
+    {
+      "oldId": "20221",
+      "name": "임예준",
+      "newId": "30315",
+      "status": "success"
+    },
+    {
+      "oldId": "20222",
+      "name": "정세진",
+      "newId": "30817",
+      "status": "success"
+    },
+    {
+      "oldId": "20223",
+      "name": "조한기",
+      "newId": "30820",
+      "status": "success"
+    },
+    {
+      "oldId": "20224",
+      "name": "차도연",
+      "newId": "30721",
+      "status": "success"
+    },
+    {
+      "oldId": "20225",
+      "name": "최해린",
+      "newId": "30320",
+      "status": "success"
+    },
+    {
+      "oldId": "20301",
+      "name": "고서영",
+      "newId": "30401",
+      "status": "success"
+    },
+    {
+      "oldId": "20302",
+      "name": "곽민기",
+      "newId": null,
+      "status": "failed"
+    },
+    {
+      "oldId": "20303",
+      "name": "김규린",
+      "newId": "30403",
+      "status": "success"
+    },
+    {
+      "oldId": "20304",
+      "name": "김도윤",
+      "newId": null,
+      "status": "failed"
+    },
+    {
+      "oldId": "20305",
+      "name": "김리원",
+      "newId": "30404",
+      "status": "success"
+    },
+    {
+      "oldId": "20306",
+      "name": "김민석",
+      "newId": "30603",
+      "status": "success"
+    },
+    {
+      "oldId": "20307",
+      "name": "김서연",
+      "newId": "30103",
+      "status": "success"
+    },
+    {
+      "oldId": "20308",
+      "name": "김지완",
+      "newId": "30704",
+      "status": "success"
+    },
+    {
+      "oldId": "20309",
+      "name": "김현서",
+      "newId": "30108",
+      "status": "success"
+    },
+    {
+      "oldId": "20310",
+      "name": "김현종",
+      "newId": "30408",
+      "status": "success"
+    },
+    {
+      "oldId": "20311",
+      "name": "김희성",
+      "newId": "30505",
+      "status": "success"
+    },
+    {
+      "oldId": "20312",
+      "name": "마가인",
+      "newId": "30304",
+      "status": "success"
+    },
+    {
+      "oldId": "20313",
+      "name": "박준서",
+      "newId": "30412",
+      "status": "success"
+    },
+    {
+      "oldId": "20314",
+      "name": "배강유",
+      "newId": "30607",
+      "status": "success"
+    },
+    {
+      "oldId": "20315",
+      "name": "서진웅",
+      "newId": "30809",
+      "status": "success"
+    },
+    {
+      "oldId": "20316",
+      "name": "오연학",
+      "newId": "30510",
+      "status": "success"
+    },
+    {
+      "oldId": "20317",
+      "name": "오유근",
+      "newId": "30611",
+      "status": "success"
+    },
+    {
+      "oldId": "20318",
+      "name": "유예민",
+      "newId": "30117",
+      "status": "success"
+    },
+    {
+      "oldId": "20319",
+      "name": "이시우",
+      "newId": "30311",
+      "status": "success"
+    },
+    {
+      "oldId": "20320",
+      "name": "이유찬",
+      "newId": "30514",
+      "status": "success"
+    },
+    {
+      "oldId": "20321",
+      "name": "전은채",
+      "newId": "30220",
+      "status": "success"
+    },
+    {
+      "oldId": "20322",
+      "name": "조민규",
+      "newId": "30819",
+      "status": "success"
+    },
+    {
+      "oldId": "20323",
+      "name": "조유나",
+      "newId": "30622",
+      "status": "success"
+    },
+    {
+      "oldId": "20324",
+      "name": "조윤서",
+      "newId": "30318",
+      "status": "success"
+    },
+    {
+      "oldId": "20325",
+      "name": "홍지민",
+      "newId": "30425",
+      "status": "success"
+    },
+    {
+      "oldId": "20401",
+      "name": "김동겸",
+      "newId": "30802",
+      "status": "success"
+    },
+    {
+      "oldId": "20402",
+      "name": "남은수",
+      "newId": "30506",
+      "status": "success"
+    },
+    {
+      "oldId": "20403",
+      "name": "박성현",
+      "newId": "30707",
+      "status": "success"
+    },
+    {
+      "oldId": "20404",
+      "name": "박준성",
+      "newId": "30507",
+      "status": "success"
+    },
+    {
+      "oldId": "20405",
+      "name": "박지완",
+      "newId": "30508",
+      "status": "success"
+    },
+    {
+      "oldId": "20406",
+      "name": "백상기",
+      "newId": "30509",
+      "status": "success"
+    },
+    {
+      "oldId": "20407",
+      "name": "송하온",
+      "newId": "30608",
+      "status": "success"
+    },
+    {
+      "oldId": "20408",
+      "name": "오승현",
+      "newId": "30115",
+      "status": "success"
+    },
+    {
+      "oldId": "20409",
+      "name": "오현재",
+      "newId": "30612",
+      "status": "success"
+    },
+    {
+      "oldId": "20410",
+      "name": "윤지환",
+      "newId": "30512",
+      "status": "success"
+    },
+    {
+      "oldId": "20411",
+      "name": "이상우",
+      "newId": "30615",
+      "status": "success"
+    },
+    {
+      "oldId": "20412",
+      "name": "이서은",
+      "newId": "30617",
+      "status": "success"
+    },
+    {
+      "oldId": "20413",
+      "name": "이성현",
+      "newId": "30513",
+      "status": "success"
+    },
+    {
+      "oldId": "20414",
+      "name": "이준성",
+      "newId": "30618",
+      "status": "success"
+    },
+    {
+      "oldId": "20415",
+      "name": "이채원",
+      "newId": "30419",
+      "status": "success"
+    },
+    {
+      "oldId": "20416",
+      "name": "이현승",
+      "newId": "30516",
+      "status": "success"
+    },
+    {
+      "oldId": "20417",
+      "name": "임예건",
+      "newId": "30619",
+      "status": "success"
+    },
+    {
+      "oldId": "20418",
+      "name": "임윤찬",
+      "newId": "30517",
+      "status": "success"
+    },
+    {
+      "oldId": "20419",
+      "name": "전예성",
+      "newId": "30620",
+      "status": "success"
+    },
+    {
+      "oldId": "20420",
+      "name": "정기훈",
+      "newId": "30621",
+      "status": "success"
+    },
+    {
+      "oldId": "20421",
+      "name": "정상휘",
+      "newId": "30518",
+      "status": "success"
+    },
+    {
+      "oldId": "20422",
+      "name": "정서윤",
+      "newId": "30719",
+      "status": "success"
+    },
+    {
+      "oldId": "20423",
+      "name": "정인용",
+      "newId": null,
+      "status": "failed"
+    },
+    {
+      "oldId": "20424",
+      "name": "조은산",
+      "newId": "30623",
+      "status": "success"
+    },
+    {
+      "oldId": "20425",
+      "name": "한채원",
+      "newId": "30424",
+      "status": "success"
+    },
+    {
+      "oldId": "20501",
+      "name": "곽용현",
+      "newId": "30702",
+      "status": "success"
+    },
+    {
+      "oldId": "20502",
+      "name": "권대환",
+      "newId": "30703",
+      "status": "success"
+    },
+    {
+      "oldId": "20503",
+      "name": "김도경",
+      "newId": "30602",
+      "status": "success"
+    },
+    {
+      "oldId": "20504",
+      "name": "김도현",
+      "newId": "30502",
+      "status": "success"
+    },
+    {
+      "oldId": "20505",
+      "name": "김원진",
+      "newId": "30604",
+      "status": "success"
+    },
+    {
+      "oldId": "20506",
+      "name": "김한별",
+      "newId": "30605",
+      "status": "success"
+    },
+    {
+      "oldId": "20507",
+      "name": "나은혁",
+      "newId": null,
+      "status": "failed"
+    },
+    {
+      "oldId": "20508",
+      "name": "마다인",
+      "newId": "30409",
+      "status": "success"
+    },
+    {
+      "oldId": "20509",
+      "name": "박미주",
+      "newId": "30411",
+      "status": "success"
+    },
+    {
+      "oldId": "20510",
+      "name": "박준영",
+      "newId": "30210",
+      "status": "success"
+    },
+    {
+      "oldId": "20511",
+      "name": "박찬휘",
+      "newId": "30708",
+      "status": "success"
+    },
+    {
+      "oldId": "20512",
+      "name": "오한별",
+      "newId": "30511",
+      "status": "success"
+    },
+    {
+      "oldId": "20513",
+      "name": "왕시현",
+      "newId": "30613",
+      "status": "success"
+    },
+    {
+      "oldId": "20514",
+      "name": "유현성",
+      "newId": "30614",
+      "status": "success"
+    },
+    {
+      "oldId": "20515",
+      "name": "윤영민",
+      "newId": "30712",
+      "status": "success"
+    },
+    {
+      "oldId": "20516",
+      "name": "이서원",
+      "newId": "30616",
+      "status": "success"
+    },
+    {
+      "oldId": "20517",
+      "name": "이정인",
+      "newId": "30313",
+      "status": "success"
+    },
+    {
+      "oldId": "20518",
+      "name": "이지유",
+      "newId": "30418",
+      "status": "success"
+    },
+    {
+      "oldId": "20519",
+      "name": "장윤석",
+      "newId": "30717",
+      "status": "success"
+    },
+    {
+      "oldId": "20520",
+      "name": "조민준",
+      "newId": "30520",
+      "status": "success"
+    },
+    {
+      "oldId": "20521",
+      "name": "조윤진",
+      "newId": "30521",
+      "status": "success"
+    },
+    {
+      "oldId": "20522",
+      "name": "조현우",
+      "newId": "30522",
+      "status": "success"
+    },
+    {
+      "oldId": "20523",
+      "name": "지성윤",
+      "newId": "30222",
+      "status": "success"
+    },
+    {
+      "oldId": "20524",
+      "name": "한찬희",
+      "newId": "30423",
+      "status": "success"
+    },
+    {
+      "oldId": "20525",
+      "name": "함형준",
+      "newId": "30322",
+      "status": "success"
+    },
+    {
+      "oldId": "20601",
+      "name": "강태윤",
+      "newId": "30101",
+      "status": "success"
+    },
+    {
+      "oldId": "20602",
+      "name": "김아람",
+      "newId": "30805",
+      "status": "success"
+    },
+    {
+      "oldId": "20603",
+      "name": "김욱",
+      "newId": "30405",
+      "status": "success"
+    },
+    {
+      "oldId": "20604",
+      "name": "김은우",
+      "newId": "30504",
+      "status": "success"
+    },
+    {
+      "oldId": "20605",
+      "name": "김지효",
+      "newId": "30705",
+      "status": "success"
+    },
+    {
+      "oldId": "20606",
+      "name": "김혜리",
+      "newId": "30806",
+      "status": "success"
+    },
+    {
+      "oldId": "20607",
+      "name": "문주하",
+      "newId": "30110",
+      "status": "success"
+    },
+    {
+      "oldId": "20608",
+      "name": "백규태",
+      "newId": "30112",
+      "status": "success"
+    },
+    {
+      "oldId": "20609",
+      "name": "서예림",
+      "newId": "30211",
+      "status": "success"
+    },
+    {
+      "oldId": "20610",
+      "name": "심하은",
+      "newId": "30114",
+      "status": "success"
+    },
+    {
+      "oldId": "20611",
+      "name": "안서연",
+      "newId": "30709",
+      "status": "success"
+    },
+    {
+      "oldId": "20612",
+      "name": "오시은",
+      "newId": "30811",
+      "status": "success"
+    },
+    {
+      "oldId": "20613",
+      "name": "유승민",
+      "newId": "30116",
+      "status": "success"
+    },
+    {
+      "oldId": "20614",
+      "name": "윤지성",
+      "newId": "30416",
+      "status": "success"
+    },
+    {
+      "oldId": "20615",
+      "name": "이지호",
+      "newId": "30216",
+      "status": "success"
+    },
+    {
+      "oldId": "20616",
+      "name": "임동연",
+      "newId": "30219",
+      "status": "success"
+    },
+    {
+      "oldId": "20617",
+      "name": "전지민",
+      "newId": "30221",
+      "status": "success"
+    },
+    {
+      "oldId": "20618",
+      "name": "정혜원",
+      "newId": "30818",
+      "status": "success"
+    },
+    {
+      "oldId": "20619",
+      "name": "조한나",
+      "newId": "30122",
+      "status": "success"
+    },
+    {
+      "oldId": "20620",
+      "name": "최유진",
+      "newId": "30821",
+      "status": "success"
+    },
+    {
+      "oldId": "20621",
+      "name": "한지민",
+      "newId": "30722",
+      "status": "success"
+    },
+    {
+      "oldId": "20622",
+      "name": "허윤서",
+      "newId": "30823",
+      "status": "success"
+    },
+    {
+      "oldId": "20623",
+      "name": "허지우",
+      "newId": "30323",
+      "status": "success"
+    },
+    {
+      "oldId": "20624",
+      "name": "홍지우",
+      "newId": "30524",
+      "status": "success"
+    },
+    {
+      "oldId": "20625",
+      "name": "양찬",
+      "newId": null,
+      "status": "failed"
+    },
+    {
+      "oldId": "20701",
+      "name": "강미소",
+      "newId": "30202",
+      "status": "success"
+    },
+    {
+      "oldId": "20702",
+      "name": "고은재",
+      "newId": "30701",
+      "status": "success"
+    },
+    {
+      "oldId": "20703",
+      "name": "곽예랑",
+      "newId": "30203",
+      "status": "success"
+    },
+    {
+      "oldId": "20704",
+      "name": "김래하",
+      "newId": "30803",
+      "status": "success"
+    },
+    {
+      "oldId": "20705",
+      "name": "김서윤",
+      "newId": "30804",
+      "status": "success"
+    },
+    {
+      "oldId": "20706",
+      "name": "김시윤",
+      "newId": "30105",
+      "status": "success"
+    },
+    {
+      "oldId": "20707",
+      "name": "김예진",
+      "newId": "30207",
+      "status": "success"
+    },
+    {
+      "oldId": "20708",
+      "name": "김용우",
+      "newId": "30106",
+      "status": "success"
+    },
+    {
+      "oldId": "20709",
+      "name": "김준현",
+      "newId": "30208",
+      "status": "success"
+    },
+    {
+      "oldId": "20710",
+      "name": "박수진",
+      "newId": "30808",
+      "status": "success"
+    },
+    {
+      "oldId": "20711",
+      "name": "서민재",
+      "newId": "30113",
+      "status": "success"
+    },
+    {
+      "oldId": "20712",
+      "name": "신이현",
+      "newId": "30212",
+      "status": "success"
+    },
+    {
+      "oldId": "20713",
+      "name": "이현서",
+      "newId": "30813",
+      "status": "success"
+    },
+    {
+      "oldId": "20714",
+      "name": "이혜리",
+      "newId": "30814",
+      "status": "success"
+    },
+    {
+      "oldId": "20715",
+      "name": "장준봉",
+      "newId": "30316",
+      "status": "success"
+    },
+    {
+      "oldId": "20716",
+      "name": "장현지",
+      "newId": "30317",
+      "status": "success"
+    },
+    {
+      "oldId": "20717",
+      "name": "전지윤",
+      "newId": "30816",
+      "status": "success"
+    },
+    {
+      "oldId": "20718",
+      "name": "정하랑",
+      "newId": "30121",
+      "status": "success"
+    },
+    {
+      "oldId": "20719",
+      "name": "최승비",
+      "newId": "30420",
+      "status": "success"
+    },
+    {
+      "oldId": "20720",
+      "name": "최윤서",
+      "newId": "30421",
+      "status": "success"
+    },
+    {
+      "oldId": "20721",
+      "name": "표가은",
+      "newId": "30422",
+      "status": "success"
+    },
+    {
+      "oldId": "20722",
+      "name": "한혜빈",
+      "newId": "30523",
+      "status": "success"
+    },
+    {
+      "oldId": "20723",
+      "name": "허예린",
+      "newId": "30822",
+      "status": "success"
+    },
+    {
+      "oldId": "20724",
+      "name": "허지수",
+      "newId": "30723",
+      "status": "success"
+    },
+    {
+      "oldId": "20725",
+      "name": "황채원",
+      "newId": "30824",
+      "status": "success"
+    },
+    {
+      "oldId": "20801",
+      "name": "김나현",
+      "newId": "30204",
+      "status": "success"
+    },
+    {
+      "oldId": "20802",
+      "name": "김서준",
+      "newId": "30104",
+      "status": "success"
+    },
+    {
+      "oldId": "20803",
+      "name": "김시온",
+      "newId": "30206",
+      "status": "success"
+    },
+    {
+      "oldId": "20804",
+      "name": "김연서",
+      "newId": "30302",
+      "status": "success"
+    },
+    {
+      "oldId": "20805",
+      "name": "김재현",
+      "newId": "30303",
+      "status": "success"
+    },
+    {
+      "oldId": "20806",
+      "name": "김태은",
+      "newId": "30406",
+      "status": "success"
+    },
+    {
+      "oldId": "20807",
+      "name": "문호준",
+      "newId": "30807",
+      "status": "success"
+    },
+    {
+      "oldId": "20808",
+      "name": "박규림",
+      "newId": "30706",
+      "status": "success"
+    },
+    {
+      "oldId": "20809",
+      "name": "안석우",
+      "newId": "30306",
+      "status": "success"
+    },
+    {
+      "oldId": "20810",
+      "name": "원윤재",
+      "newId": "30307",
+      "status": "success"
+    },
+    {
+      "oldId": "20811",
+      "name": "유영현",
+      "newId": "30308",
+      "status": "success"
+    },
+    {
+      "oldId": "20812",
+      "name": "이서진",
+      "newId": "30310",
+      "status": "success"
+    },
+    {
+      "oldId": "20813",
+      "name": "이석희",
+      "newId": "30417",
+      "status": "success"
+    },
+    {
+      "oldId": "20814",
+      "name": "이우진",
+      "newId": "30713",
+      "status": "success"
+    },
+    {
+      "oldId": "20815",
+      "name": "이진하",
+      "newId": "30515",
+      "status": "success"
+    },
+    {
+      "oldId": "20816",
+      "name": "이창빈",
+      "newId": "30716",
+      "status": "success"
+    },
+    {
+      "oldId": "20817",
+      "name": "이태경",
+      "newId": "30314",
+      "status": "success"
+    },
+    {
+      "oldId": "20818",
+      "name": "이태현",
+      "newId": "30812",
+      "status": "success"
+    },
+    {
+      "oldId": "20819",
+      "name": "이한나",
+      "newId": "30217",
+      "status": "success"
+    },
+    {
+      "oldId": "20820",
+      "name": "정지원",
+      "newId": "30519",
+      "status": "success"
+    },
+    {
+      "oldId": "20821",
+      "name": "정현제",
+      "newId": null,
+      "status": "failed"
+    },
+    {
+      "oldId": "20822",
+      "name": "조재형",
+      "newId": "30720",
+      "status": "success"
+    },
+    {
+      "oldId": "20823",
+      "name": "최준호",
+      "newId": "30223",
+      "status": "success"
+    },
+    {
+      "oldId": "20824",
+      "name": "한서진",
+      "newId": "30624",
+      "status": "success"
+    },
+    {
+      "oldId": "20825",
+      "name": "황유찬",
+      "newId": "30724",
+      "status": "success"
+    }
+  ]
+}
