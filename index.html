@@ -3,292 +3,337 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>판교고 모든 반 목록</title>
+  <title>2026판교고 2학년반배정 한눈에보기</title>
   <style>
     :root {
-      --bg: #f5f7fb;
-      --card: #ffffff;
-      --text: #1f2937;
+      --bg: #eef2ff;
+      --panel: #ffffff;
+      --text: #111827;
       --muted: #6b7280;
-      --line: #e5e7eb;
+      --line: #d1d5db;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
-      font-family: "Pretendard", "Noto Sans KR", sans-serif;
-      background: radial-gradient(circle at 10% 10%, #dbeafe 0%, var(--bg) 40%);
+      font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+      background: linear-gradient(160deg, #ecfeff 0%, #f8fafc 45%, #eef2ff 100%);
       color: var(--text);
     }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 24px;
-    }
-
-    .header { margin-bottom: 16px; }
-
-    h1 {
-      margin: 0;
-      font-size: 28px;
-    }
-
-    .sub {
-      color: var(--muted);
-      margin-top: 8px;
-      font-size: 14px;
+    main {
+      width: min(1200px, 100% - 32px);
+      margin: 20px auto;
     }
 
     .panel {
-      background: var(--card);
+      background: var(--panel);
+      border-radius: 16px;
       border: 1px solid var(--line);
-      border-radius: 14px;
       padding: 16px;
-      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
-      margin-bottom: 14px;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+      margin-bottom: 16px;
     }
 
-    .stats {
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      letter-spacing: -0.02em;
+    }
+
+    .meta {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .summary {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
     }
 
-    .stat {
+    .summary .item {
+      background: #f8fafc;
       border: 1px solid var(--line);
       border-radius: 12px;
       padding: 12px;
-      background: #f8fafc;
     }
 
-    .stat .label {
-      color: var(--muted);
+    .item .label {
       font-size: 12px;
+      color: var(--muted);
       margin-bottom: 4px;
     }
 
-    .stat .value {
-      font-size: 22px;
-      font-weight: 700;
+    .item .value {
+      font-size: 24px;
+      font-weight: 800;
     }
 
-    .controls {
-      display: grid;
-      grid-template-columns: 1fr 160px 180px;
-      gap: 10px;
-    }
-
-    input, select {
-      width: 100%;
+    .sheet-wrap {
+      overflow-x: auto;
+      overflow-y: auto;
+      max-height: 78vh;
       border: 1px solid var(--line);
       border-radius: 10px;
-      padding: 10px 12px;
-      font-size: 14px;
-      background: #fff;
-    }
-
-    .table-wrap {
-      overflow: auto;
-      max-height: 70vh;
-      border: 1px solid var(--line);
-      border-radius: 12px;
     }
 
     table {
-      width: 100%;
       border-collapse: collapse;
+      width: 100%;
+      min-width: 860px;
       background: #fff;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      font-size: 14px;
+      line-height: 1.35;
+      white-space: nowrap;
     }
 
     thead th {
       position: sticky;
       top: 0;
+      z-index: 2;
       background: #f1f5f9;
-      font-size: 13px;
-      text-align: left;
-      padding: 10px;
-      border-bottom: 1px solid var(--line);
-      white-space: nowrap;
+      text-align: center;
+      font-weight: 700;
+      color: #0f172a;
     }
 
     tbody td {
-      padding: 10px;
-      border-bottom: 1px solid #f1f5f9;
+      text-align: left;
+    }
+
+    tbody th {
+      background: #f8fafc;
+      text-align: center;
+      min-width: 62px;
+      font-weight: 700;
+      position: sticky;
+      left: 0;
+      z-index: 1;
+    }
+
+    tbody tr:nth-child(even) td {
+      background: #fcfdff;
+    }
+
+    .empty {
+      color: #9ca3af;
+      font-style: italic;
+    }
+
+    .hint {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .unassigned {
+      margin-top: 10px;
+      padding: 12px;
+      border: 1px dashed #cbd5f5;
+      border-radius: 12px;
+      background: #f8faff;
       font-size: 14px;
     }
 
-    tbody tr:hover { background: #f8fafc; }
+    .hidden {
+      display: none;
+    }
 
-    .badge {
+    .pill {
       display: inline-block;
-      padding: 4px 8px;
+      padding: 2px 8px;
       border-radius: 999px;
+      background: #ede9fe;
+      color: #4c1d95;
       font-size: 12px;
       font-weight: 700;
+      margin-left: 4px;
+      vertical-align: middle;
     }
 
-    .ok { color: #065f46; background: #d1fae5; }
-    .fail { color: #991b1b; background: #fee2e2; }
+    @media (max-width: 768px) {
+      main {
+        width: calc(100% - 16px);
+        margin: 10px auto;
+      }
 
-    .hint {
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 10px;
-    }
+      h1 {
+        font-size: 24px;
+      }
 
-    @media (max-width: 760px) {
-      .stats { grid-template-columns: 1fr; }
-      .controls { grid-template-columns: 1fr; }
+      .summary {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="container">
-    <section class="header">
-      <h1>Pangyo Fast Results Viewer</h1>
-      <div id="meta" class="sub">데이터 로딩 중...</div>
+  <main>
+    <section class="panel">
+      <h1>2026판교고 2학년반배정 한눈에보기</h1>
+      <div id="meta" class="meta">데이터 로딩 중...</div>
     </section>
 
-    <section class="panel stats">
-      <div class="stat">
-        <div class="label">전체</div>
+    <section class="panel summary">
+      <div class="item">
+        <div class="label">총 대상</div>
         <div id="total" class="value">-</div>
       </div>
-      <div class="stat">
-        <div class="label">성공</div>
+      <div class="item">
+        <div class="label">배정 완료</div>
         <div id="success" class="value">-</div>
       </div>
-      <div class="stat">
-        <div class="label">실패</div>
+      <div class="item">
+        <div class="label">미배정</div>
         <div id="failed" class="value">-</div>
       </div>
     </section>
 
-    <section class="panel controls">
-      <input id="q" placeholder="이름/구학번/신학번 검색" />
-      <select id="classFilter">
-        <option value="all">전체 반</option>
-      </select>
-      <select id="sortFilter">
-        <option value="oldId">정렬: 구학번순</option>
-        <option value="newId">정렬: 신학번순</option>
-      </select>
-    </section>
-
     <section class="panel">
-      <div class="table-wrap">
+      <div class="sheet-wrap">
         <table>
           <thead>
             <tr>
-              <th>#</th>
-              <th>구학번</th>
-              <th>이름</th>
-              <th>신학번</th>
-              <th>상태</th>
+              <th>번호</th>
+              <th>1-1반</th>
+              <th>1-2반</th>
+              <th>1-3반</th>
+              <th>1-4반</th>
+              <th>1-5반</th>
+              <th>1-6반</th>
+              <th>1-7반</th>
+              <th>1-8반</th>
             </tr>
           </thead>
           <tbody id="tbody"></tbody>
         </table>
       </div>
+      <div id="unassigned" class="unassigned hidden"></div>
       <div id="count" class="hint"></div>
     </section>
   </main>
 
   <script>
-    let source = [];
-
-    function parseClass(newId) {
-      if (!newId || newId.length < 3) return null;
-      return newId.slice(1, 3);
-    }
-
-    function buildClassFilters(items) {
-      const classes = new Set();
-      items.forEach((item) => {
-        const classNo = parseClass(item.newId);
-        if (classNo) classes.add(classNo);
-      });
-
-      const classFilter = document.getElementById("classFilter");
-      [...classes].sort((a, b) => Number(a) - Number(b)).forEach((classNo) => {
-        classFilter.insertAdjacentHTML("beforeend", `<option value="${classNo}">${Number(classNo)}반</option>`);
-      });
-    }
-
-    function sortRows(rows, sortBy) {
-      const sorted = [...rows];
-      sorted.sort((a, b) => {
-        if (sortBy === "newId") {
-          if (!a.newId && !b.newId) return a.oldId.localeCompare(b.oldId);
-          if (!a.newId) return 1;
-          if (!b.newId) return -1;
-          return a.newId.localeCompare(b.newId);
-        }
-        return a.oldId.localeCompare(b.oldId);
-      });
-      return sorted;
-    }
+    const CLASS_COUNT = 8;
+    const DEFAULT_MAX_ROW = 25;
 
     function maskName(name) {
-      if (!name) return "";
-      if (name.length <= 1) return "○";
-      if (name.length === 2) return name[0] + "○";
-      return name[0] + "○".repeat(name.length - 2) + name[name.length - 1];
+      const text = String(name ?? "").trim();
+      if (!text) return "";
+      if (text.length === 1) return text;
+      if (text.length === 2) return `${text[0]}O`;
+      return `${text[0]}${"O".repeat(text.length - 2)}${text[text.length - 1]}`;
     }
 
-    function rowHtml(item, index) {
-      const statusLabel = item.status === "success" ? "성공" : "실패";
-      const badgeClass = item.status === "success" ? "ok" : "fail";
-      return `
-        <tr>
-          <td>${index + 1}</td>
-          <td>${item.oldId}</td>
-          <td>${maskName(item.name)}</td>
-          <td>${item.newId ?? "-"}</td>
-          <td><span class="badge ${badgeClass}">${statusLabel}</span></td>
-        </tr>
-      `;
+    function parseAssignment(newId) {
+      if (!newId) return null;
+      const digits = String(newId).replace(/\D/g, "");
+      if (digits.length !== 5) return null;
+
+      const classNo = Number(digits.slice(1, 3));
+      const seatNo = Number(digits.slice(3));
+      if (!Number.isInteger(classNo) || !Number.isInteger(seatNo) || classNo < 1 || classNo > CLASS_COUNT || seatNo < 1) {
+        return null;
+      }
+
+      return { classNo, seatNo };
     }
 
-    function render() {
-      const q = document.getElementById("q").value.trim().toLowerCase();
-      const classNo = document.getElementById("classFilter").value;
-      const sortBy = document.getElementById("sortFilter").value;
+    function buildGrid(students) {
+      const matrix = [];
+      const unassigned = [];
 
-      const filtered = source.filter((s) => {
-        const qPass = !q || [s.oldId, s.name, s.newId ?? ""].join(" ").toLowerCase().includes(q);
-        const classPass = classNo === "all" || parseClass(s.newId) === classNo;
-        return qPass && classPass;
+      students.forEach((student) => {
+        const parsed = parseAssignment(student.newId);
+        if (!parsed) {
+          if (student.status !== "success") {
+            unassigned.push(student.name || "");
+          }
+          return;
+        }
+
+        const { classNo, seatNo } = parsed;
+        const rowIdx = seatNo - 1;
+        if (!matrix[rowIdx]) {
+          matrix[rowIdx] = Array.from({ length: CLASS_COUNT }).fill("");
+        }
+        matrix[rowIdx][classNo - 1] = student.name || "";
       });
 
-      const sorted = sortRows(filtered, sortBy);
-      document.getElementById("tbody").innerHTML = sorted.map(rowHtml).join("");
-      document.getElementById("count").textContent = `표시 중: ${sorted.length} / ${source.length}`;
+      const maxSeat = Math.max(matrix.length, DEFAULT_MAX_ROW);
+      for (let i = 0; i < maxSeat; i += 1) {
+        if (!matrix[i]) {
+          matrix[i] = Array.from({ length: CLASS_COUNT }).fill("");
+        }
+      }
+
+      return { matrix, unassigned };
+    }
+
+    function render(students) {
+      const parsed = buildGrid(students);
+      const rows = parsed.matrix
+        .slice(0, parsed.matrix.length)
+        .map((row, idx) => {
+          const cells = row
+            .map((name) => {
+              const value = maskName(name);
+              return `<td${value ? "" : " class=\"empty\""}>${value || "-"}</td>`;
+            })
+            .join("");
+          return `<tr><th class="row-no">${idx + 1}번</th>${cells}</tr>`;
+        })
+        .join("");
+
+      document.getElementById("tbody").innerHTML = rows;
+      document.getElementById("count").textContent = `총 ${parsed.matrix.length}개 줄 기준으로 배정표를 렌더링했습니다.`;
+
+      const unassignedPanel = document.getElementById("unassigned");
+      if (parsed.unassigned.length === 0) {
+        unassignedPanel.classList.add("hidden");
+        unassignedPanel.innerHTML = "";
+        return;
+      }
+
+      const list = parsed.unassigned.map((name) => `<li>${maskName(name)}</li>`).join("");
+      unassignedPanel.innerHTML = `<strong>미배정 명단</strong> <span class=\"pill\">${parsed.unassigned.length}명</span><br/><ul>${list}</ul>`;
+      unassignedPanel.classList.remove("hidden");
     }
 
     async function init() {
       const res = await fetch("./pangyo_fast_results.json");
-      if (!res.ok) throw new Error("JSON 로딩 실패");
+      if (!res.ok) {
+        throw new Error("JSON 로딩 실패");
+      }
+
       const data = await res.json();
+      const students = Array.isArray(data.students) ? data.students : [];
 
-      source = data.students;
-      document.getElementById("meta").textContent = `소스: ${data.meta.source}`;
-      document.getElementById("total").textContent = data.meta.total;
-      document.getElementById("success").textContent = data.meta.success;
-      document.getElementById("failed").textContent = data.meta.failed;
+      const successCount = students.filter((student) => student.status === "success" && parseAssignment(student.newId)).length;
+      const failedCount = Math.max(students.length - successCount, 0);
 
-      buildClassFilters(source.filter((s) => s.status === "success"));
+      document.getElementById("meta").textContent = `데이터 출처: ${data.meta?.source ?? "pangyo_fast_results.json"}${data.meta?.generatedAt ? ` (${data.meta.generatedAt})` : ""}`;
+      document.getElementById("total").textContent = students.length;
+      document.getElementById("success").textContent = successCount;
+      document.getElementById("failed").textContent = failedCount;
 
-      document.getElementById("q").addEventListener("input", render);
-      document.getElementById("classFilter").addEventListener("change", render);
-      document.getElementById("sortFilter").addEventListener("change", render);
-      render();
+      render(students);
     }
 
     init().catch((err) => {
       document.getElementById("meta").textContent = `오류: ${err.message}`;
+      document.getElementById("count").textContent = "표시할 데이터가 없습니다.";
     });
   </script>
 </body>
