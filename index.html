@@ -180,8 +180,10 @@
   <main>
     <section class="panel">
       <h1>2026판교고 2학년반배정 한눈에보기</h1>
+      <div id="meta" class="meta">데이터 로딩 중...</div>
+      <div class="meta" id="credit">Made by 임태윤, 황현준</div>
       <div class="actions">
-        <a class="button-link" href="./2026판교고_2학년반배정_한눈에보기_배포용.xlsx" download>엑셀 파일 다운로드</a>
+        <a class="button-link" href="./2026판교고_2학년반배정_한눈에보기.xlsx" download>엑셀 파일 다운로드</a>
       </div>
     </section>
 
@@ -206,14 +208,14 @@
           <thead>
             <tr>
               <th>번호</th>
-              <th>2-1반</th>
-              <th>2-2반</th>
-              <th>2-3반</th>
-              <th>2-4반</th>
-              <th>2-5반</th>
-              <th>2-6반</th>
-              <th>2-7반</th>
-              <th>2-8반</th>
+              <th>1-1반</th>
+              <th>1-2반</th>
+              <th>1-3반</th>
+              <th>1-4반</th>
+              <th>1-5반</th>
+              <th>1-6반</th>
+              <th>1-7반</th>
+              <th>1-8반</th>
             </tr>
           </thead>
           <tbody id="tbody"></tbody>
@@ -290,7 +292,7 @@
         .join("");
 
       document.getElementById("tbody").innerHTML = rows;
-      document.getElementById("count").textContent = `총 ${matrix.length}개 줄 기준으로 배정표를 렌더링했습니다.`;
+      document.getElementById("count").textContent = "Made by 임태윤, 황현준";
     }
 
     async function init() {
@@ -314,7 +316,7 @@
 
     init().catch((err) => {
       document.getElementById("meta").textContent = `오류: ${err.message}`;
-      document.getElementById("count").textContent = "표시할 데이터가 없습니다.";
+      document.getElementById("count").textContent = "Made by 임태윤, 황현준";
     });
   </script>
 </body>
