@@ -231,6 +231,13 @@
       return sorted;
     }
 
+    function maskName(name) {
+      if (!name) return "";
+      if (name.length <= 1) return "○";
+      if (name.length === 2) return name[0] + "○";
+      return name[0] + "○".repeat(name.length - 2) + name[name.length - 1];
+    }
+
     function rowHtml(item, index) {
       const statusLabel = item.status === "success" ? "성공" : "실패";
       const badgeClass = item.status === "success" ? "ok" : "fail";
@@ -238,7 +245,7 @@
         <tr>
           <td>${index + 1}</td>
           <td>${item.oldId}</td>
-          <td>${item.name}</td>
+          <td>${maskName(item.name)}</td>
           <td>${item.newId ?? "-"}</td>
           <td><span class="badge ${badgeClass}">${statusLabel}</span></td>
         </tr>
